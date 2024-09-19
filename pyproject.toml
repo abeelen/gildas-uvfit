@@ -14,22 +14,24 @@ license = { file = "licenses/LICENSE.rst" }
 authors = [
   { name = "Alexandre Beelen", email = "alexandre.beelen@lam.fr" },
 ]
-dependencies = []
+dependencies = ["astropy>=4.0", "numpy>=1.16"]
 dynamic = ["version"]
-
-[project.scripts]
-open_astronomy_package_template_example = "gildas_uvfit.example_mod:main"
 
 [project.optional-dependencies]
 test = [
     "pytest",
     "pytest-doctestplus",
-    "pytest-cov"
+    "pytest-cov",
+    "specutils",
 ]
 docs = [
     "sphinx",
     "sphinx-automodapi",
 ]
+specutils = [
+    "specutils",
+]
+
 [project.urls]
 repository = "https://github.com/abeelen/gildas-uvfit"
 
@@ -39,6 +41,9 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 exclude = ["gildas_uvfit._dev*"]
+
+[tool.setuptools.package-data]
+data = ["*.fits"]
 
 [tool.setuptools_scm]
 write_to = "gildas_uvfit/_version.py"

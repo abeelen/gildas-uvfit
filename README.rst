@@ -1,6 +1,37 @@
 Helper function to read IRAM GILDAS uvfit fits file
 ---------------------------------------------------
 
+gildas_uvfit is a set of helper function to read uv-fit files procuded 
+by `GILDAS MAPPING/uv_fit task <https://www.iram.fr/IRAMFR/GILDAS/doc/html/map-html/node90.html>`_ 
+exported to the fits format by using the `GILDAS CLIC/fits <https://www.iram.fr/IRAMFR/GILDAS/doc/html/clic-html/node103.html>`_ command
+
+.. code-block:: console
+
+    fits "blah.fits" from "blah.uvfit" /style standard /overwrite /bits -32
+
+Then you can access the fitted values as astropy Table using python with
+
+
+.. code-block:: python
+    
+    from astropy.table import Table
+    import gildas_uvfit
+
+    data = Table.read('data.fits', format='gildas_uvfit')
+
+
+If you fixed the position and size of the source in the `GILDAS MAPPING/uv_fit task <https://www.iram.fr/IRAMFR/GILDAS/doc/html/map-html/node90.html>`_ 
+then you can use `specutils.Spectrum1D <https://specutils.readthedocs.io/en/stable/api/specutils.Spectrum1D.html>`_ object to read the data directly
+
+.. code-block:: python
+    
+    from specutils import Spectrum1D
+    from gildas_uvfit import specutils_custom_loader
+
+    spec = Spectrum1D.read('data.fits')
+
+
+
 License
 -------
 
