@@ -15,4 +15,4 @@ exclude .gitignore
 exclude .gitattributes
 exclude *.yml
 exclude *.yaml
-include gildas_uvfit/data/*.fits
+exclude gildas_uvfit/data/*.fits
